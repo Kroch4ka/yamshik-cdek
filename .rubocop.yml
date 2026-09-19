@@ -1,0 +1,31 @@
+plugins:
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  SuggestExtensions: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Value objects are built from long keyword lists; keyword arguments are
+# self-documenting and do not have the positional-arguments problem.
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+RSpec/MultipleExpectations:
+  Max: 6
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 7
+
+# Immutable value objects assign all attributes in the constructor.
+Metrics/MethodLength:
+  Max: 15
