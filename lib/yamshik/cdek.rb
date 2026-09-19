@@ -3,6 +3,10 @@
 require "yamshik"
 
 require_relative "cdek/version"
+require_relative "cdek/v2/auth"
+require_relative "cdek/v2/payload_builder"
+require_relative "cdek/v2/error_mapper"
+require_relative "cdek/v2/parcel_mapper"
 require_relative "cdek/v2/adapter"
 
 # CDEK (СДЭК) adapter for the yamshik core gem.
