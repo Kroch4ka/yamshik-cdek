@@ -6,6 +6,6 @@ RSpec.describe Yamshik::Cdek do
   end
 
   it "registers itself as :cdek" do
-    expect(Yamshik.carrier(:cdek)).to be_a(Yamshik::Cdek::V2::Adapter)
+    expect(Yamshik::Registry.fetch(:cdek)).to eq(Yamshik::Cdek::V2::Adapter)
   end
 end

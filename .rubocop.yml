@@ -29,3 +29,14 @@ RSpec/MultipleMemoizedHelpers:
 # Immutable value objects assign all attributes in the constructor.
 Metrics/MethodLength:
   Max: 15
+
+# Payload/response mapping code is branchy by nature (field-by-field
+# translation between two models).
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/CyclomaticComplexity:
+  Max: 9
+
+Metrics/PerceivedComplexity:
+  Max: 9
