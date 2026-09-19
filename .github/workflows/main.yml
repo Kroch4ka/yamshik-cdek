@@ -1,0 +1,57 @@
+name: Ruby
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+
+jobs:
+  spec:
+    runs-on: ubuntu-latest
+    name: RSpec (Ruby ${{ matrix.ruby }})
+    strategy:
+      matrix:
+        ruby:
+          - "3.2"
+          - "3.3"
+          - "3.4"
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Run specs
+        run: bundle exec rspec
+
+  rubocop:
+    runs-on: ubuntu-latest
+    name: RuboCop
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          bundler-cache: true
+      - name: Run RuboCop
+        run: bundle exec rubocop
+
+  gem-build:
+    runs-on: ubuntu-latest
+    name: gem build
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          bundler-cache: true
+      - name: Build gem
+        run: gem build yamshik-cdek.gemspec
